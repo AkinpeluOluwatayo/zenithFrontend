@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Ensure 'export default' is present here
+
 export default function ProtectedRoute({ children }) {
     const router = useRouter();
     const [isAuthorized, setIsAuthorized] = useState(false);

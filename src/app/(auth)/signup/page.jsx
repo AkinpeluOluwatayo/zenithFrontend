@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { toast, Toaster } from "react-hot-toast"; // Added Toast
+import { toast, Toaster } from "react-hot-toast";
 import { registerUser } from "@/services/AuthService";
 
 export default function Signup() {
@@ -16,13 +16,13 @@ export default function Signup() {
         password: ""
     });
 
-    // --- Validation Rules ---
+
     const validateForm = () => {
-        // Name: Alphabets and spaces only
+
         const nameRegex = /^[A-Za-z\s]+$/;
-        // Email: Standard email format
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // Password: min 8 chars, 1 uppercase, 1 special character, 1 number
+
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
         if (!nameRegex.test(formData.fullName)) {
@@ -52,7 +52,7 @@ export default function Signup() {
                     style: { background: '#161618', color: '#fff', border: '1px solid #a855f7' }
                 });
 
-                // Short delay to allow the user to see the success message
+
                 setTimeout(() => router.push("/dashboard"), 1500);
             }
         },
@@ -68,7 +68,7 @@ export default function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Run validations before triggering API
+
         if (validateForm()) {
             signupMutation.mutate(formData);
         }
@@ -76,7 +76,7 @@ export default function Signup() {
 
     return (
         <div className="min-h-screen bg-[#0A0A0B] flex font-sans text-slate-200">
-            {/* 1. Added Toaster Container */}
+
             <Toaster position="top-center" reverseOrder={false} />
 
             {/* LEFT SIDE: THE FORM */}

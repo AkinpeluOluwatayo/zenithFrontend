@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { toast, Toaster } from "react-hot-toast"; // Added Toast
+import { toast, Toaster } from "react-hot-toast";
 import { loginUser } from "@/services/AuthService";
 
 export default function Login() {
@@ -15,10 +15,10 @@ export default function Login() {
         password: ""
     });
 
-    // --- Validation Rules ---
+
     const validateForm = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // Password: min 8 chars, at least 1 uppercase, 1 symbol
+
         const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
         if (!emailRegex.test(formData.email)) {
@@ -44,7 +44,6 @@ export default function Login() {
                     iconTheme: { primary: '#a855f7', secondary: '#fff' },
                 });
 
-                // Delay redirect slightly so user sees the success toast
                 setTimeout(() => router.push("/dashboard"), 1200);
             }
         },
@@ -58,7 +57,6 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Run validation before triggering mutation
         if (validateForm()) {
             loginMutation.mutate(formData);
         }
@@ -68,7 +66,7 @@ export default function Login() {
 
     return (
         <div className="min-h-screen bg-[#0A0A0B] flex font-sans text-slate-200">
-            {/* 1. Add Toaster Container */}
+
             <Toaster position="top-center" reverseOrder={false} />
 
             {/* FORM SECTION */}
